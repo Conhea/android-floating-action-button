@@ -1,6 +1,14 @@
 Change Log
 ==========
 
+Version 2.0.3 *(2018-11-19)*
+----------------------------
+
+ * Refactored to androidx
+ * Updated build to newest build-tool 28.0.3
+ * Updated android-gradle-plugin to version 3.2.1
+ * Updated Gradlewrapper to version 4.10.2
+
 Version 2.0.2 *(2018-06-22)*
 ----------------------------
 

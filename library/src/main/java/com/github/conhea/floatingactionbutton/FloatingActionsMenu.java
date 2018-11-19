@@ -12,10 +12,6 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Parcel;
 import android.os.Parcelable;
-import android.support.annotation.ColorRes;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 import android.view.ContextThemeWrapper;
 import android.view.MotionEvent;
@@ -27,7 +23,11 @@ import android.view.animation.Interpolator;
 import android.view.animation.OvershootInterpolator;
 import android.widget.TextView;
 
-@CoordinatorLayout.DefaultBehavior(FloatingActionButtonSnackbarBehavior.class)
+import androidx.annotation.ColorRes;
+import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
+
+@androidx.coordinatorlayout.widget.CoordinatorLayout.DefaultBehavior(FloatingActionButtonSnackbarBehavior.class)
 public class FloatingActionsMenu extends ViewGroup {
     public static final int EXPAND_UP = 0;
     public static final int EXPAND_DOWN = 1;
@@ -56,8 +56,8 @@ public class FloatingActionsMenu extends ViewGroup {
 
     private boolean mExpanded;
 
-    private AnimatorSet mExpandAnimation = new AnimatorSet().setDuration(ANIMATION_DURATION);
-    private AnimatorSet mCollapseAnimation = new AnimatorSet().setDuration(ANIMATION_DURATION);
+    private final AnimatorSet mExpandAnimation = new AnimatorSet().setDuration(ANIMATION_DURATION);
+    private final AnimatorSet mCollapseAnimation = new AnimatorSet().setDuration(ANIMATION_DURATION);
     private FloatingActionButton mAddButton;
     private AnimatingDrawable mAnimatingDrawable;
     private int mMaxButtonWidth;
@@ -168,7 +168,7 @@ public class FloatingActionsMenu extends ViewGroup {
 
     private static class SwitchingDrawable extends AnimatingDrawable {
 
-        private Drawable mStartDrawable;
+        private final Drawable mStartDrawable;
         private Drawable mEndDrawable;
 
         public SwitchingDrawable(Drawable startDrawable) {
@@ -519,16 +519,17 @@ public class FloatingActionsMenu extends ViewGroup {
     private int adjustForOvershoot(int dimension) {
         return dimension * 12 / 10;
     }
-    private static Interpolator sExpandInterpolator = new OvershootInterpolator();
-    private static Interpolator sCollapseInterpolator = new DecelerateInterpolator(3f);
 
-    private static Interpolator sAlphaExpandInterpolator = new DecelerateInterpolator();
+    private static final Interpolator sExpandInterpolator = new OvershootInterpolator();
+    private static final Interpolator sCollapseInterpolator = new DecelerateInterpolator(3f);
+
+    private static final Interpolator sAlphaExpandInterpolator = new DecelerateInterpolator();
 
     private class LayoutParams extends ViewGroup.LayoutParams {
-        private ObjectAnimator mExpandDir = new ObjectAnimator();
-        private ObjectAnimator mExpandAlpha = new ObjectAnimator();
-        private ObjectAnimator mCollapseDir = new ObjectAnimator();
-        private ObjectAnimator mCollapseAlpha = new ObjectAnimator();
+        private final ObjectAnimator mExpandDir = new ObjectAnimator();
+        private final ObjectAnimator mExpandAlpha = new ObjectAnimator();
+        private final ObjectAnimator mCollapseDir = new ObjectAnimator();
+        private final ObjectAnimator mCollapseAlpha = new ObjectAnimator();
 
         private boolean animationsSetToPlay;
 

@@ -1,16 +1,19 @@
 package com.github.conhea.floatingactionbutton;
 
 import android.graphics.Rect;
-import android.support.annotation.NonNull;
 import android.view.MotionEvent;
 import android.view.TouchDelegate;
 import android.view.View;
 
+import androidx.annotation.NonNull;
+
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 
 public class TouchDelegateGroup extends TouchDelegate {
     private static final Rect USELESS_HACKY_RECT = new Rect();
-    private final ArrayList<TouchDelegate> mTouchDelegates = new ArrayList<TouchDelegate>();
+    private final ArrayList<TouchDelegate> mTouchDelegates = new ArrayList<>();
     private TouchDelegate mCurrentTouchDelegate;
     private boolean mEnabled;
 

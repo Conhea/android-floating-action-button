@@ -1,9 +1,9 @@
 package com.github.conhea.floatingactionbutton;
 
 import android.content.Context;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.Snackbar;
-import android.support.v4.view.animation.FastOutSlowInInterpolator;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.snackbar.Snackbar;
+import androidx.interpolator.view.animation.FastOutSlowInInterpolator;
 import android.util.AttributeSet;
 import android.view.View;
 
@@ -25,7 +25,7 @@ import java.util.List;
  * &lt;/android.support.design.widget.CoordinatorLayout&gt;
  * </pre>
  */
-public class FloatingActionButtonSnackbarBehavior extends CoordinatorLayout.Behavior<View> {
+public class FloatingActionButtonSnackbarBehavior extends androidx.coordinatorlayout.widget.CoordinatorLayout.Behavior<View> {
 
     private float mTranslationY;
 
@@ -45,12 +45,12 @@ public class FloatingActionButtonSnackbarBehavior extends CoordinatorLayout.Beha
      * @return 0.0F if there are no Snackbar components found, otherwise returns the min offset
      * that the FAB component should be animated.
      */
-    private float getFabTranslationYForSnackbar(CoordinatorLayout parent, View fab) {
+    private float getFabTranslationYForSnackbar(androidx.coordinatorlayout.widget.CoordinatorLayout parent, View fab) {
         float minOffset = 0.0F;
         final List<View> dependencies = parent.getDependencies(fab);
 
         for (View view : dependencies) {
-            if (view instanceof Snackbar.SnackbarLayout && parent.doViewsOverlap(fab, view)) {
+            if (view instanceof com.google.android.material.snackbar.Snackbar.SnackbarLayout && parent.doViewsOverlap(fab, view)) {
                 minOffset = Math.min(minOffset, view.getTranslationY() - (float) view.getHeight());
             }
         }
@@ -59,13 +59,13 @@ public class FloatingActionButtonSnackbarBehavior extends CoordinatorLayout.Beha
     }
 
     @Override
-    public boolean layoutDependsOn(CoordinatorLayout parent, View child, View dependency) {
-        return dependency instanceof Snackbar.SnackbarLayout;
+    public boolean layoutDependsOn(androidx.coordinatorlayout.widget.CoordinatorLayout parent, View child, View dependency) {
+        return dependency instanceof com.google.android.material.snackbar.Snackbar.SnackbarLayout;
     }
 
     @Override
-    public boolean onDependentViewChanged(CoordinatorLayout parent, View child, View dependency) {
-        if (dependency instanceof Snackbar.SnackbarLayout) {
+    public boolean onDependentViewChanged(androidx.coordinatorlayout.widget.CoordinatorLayout parent, View child, View dependency) {
+        if (dependency instanceof com.google.android.material.snackbar.Snackbar.SnackbarLayout) {
             this.updateFabTranslationForSnackbar(parent, child, dependency);
         }
         return false;
@@ -74,7 +74,7 @@ public class FloatingActionButtonSnackbarBehavior extends CoordinatorLayout.Beha
     /**
      * Animate FAB on snackbar change.
      */
-    private void updateFabTranslationForSnackbar(CoordinatorLayout parent, View fab, View snackbar) {
+    private void updateFabTranslationForSnackbar(androidx.coordinatorlayout.widget.CoordinatorLayout parent, View fab, View snackbar) {
         final float translationY = getFabTranslationYForSnackbar(parent, fab);
         if (translationY != this.mTranslationY) {
             fab.animate().cancel();

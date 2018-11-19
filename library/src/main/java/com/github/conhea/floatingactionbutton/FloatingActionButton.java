@@ -1,6 +1,5 @@
 package com.github.conhea.floatingactionbutton;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -18,23 +17,21 @@ import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.ShapeDrawable.ShaderFactory;
 import android.graphics.drawable.StateListDrawable;
 import android.graphics.drawable.shapes.OvalShape;
-import android.os.Build;
-import android.os.Build.VERSION_CODES;
-import android.support.annotation.ColorRes;
-import android.support.annotation.DimenRes;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.IntDef;
-import android.support.annotation.NonNull;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.v4.content.res.ResourcesCompat;
 import android.util.AttributeSet;
 import android.widget.TextView;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.DimenRes;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@CoordinatorLayout.DefaultBehavior(FloatingActionButtonSnackbarBehavior.class)
-public class FloatingActionButton extends android.support.v7.widget.AppCompatImageButton {
+@androidx.coordinatorlayout.widget.CoordinatorLayout.DefaultBehavior(FloatingActionButtonSnackbarBehavior.class)
+public class FloatingActionButton extends androidx.appcompat.widget.AppCompatImageButton {
 
     public static final int SIZE_NORMAL = 0;
     public static final int SIZE_MINI = 1;
@@ -268,14 +265,14 @@ public class FloatingActionButton extends android.support.v7.widget.AppCompatIma
                 circleInsetHorizontal + iconOffset,
                 circleInsetBottom + iconOffset);
 
-        setBackgroundCompat(layerDrawable);
+        setBackground(layerDrawable);
     }
 
     Drawable getIconDrawable() {
         if (mIconDrawable != null) {
             return mIconDrawable;
         } else if (mIcon != 0) {
-            return getResources().getDrawable(mIcon);
+            return ResourcesCompat.getDrawable(getResources(), mIcon, null);
         } else {
             return new ColorDrawable(Color.TRANSPARENT);
         }
@@ -410,16 +407,6 @@ public class FloatingActionButton extends android.support.v7.widget.AppCompatIma
         });
 
         return shapeDrawable;
-    }
-
-    @SuppressWarnings("deprecation")
-    @SuppressLint("NewApi")
-    private void setBackgroundCompat(Drawable drawable) {
-        if (Build.VERSION.SDK_INT >= VERSION_CODES.JELLY_BEAN) {
-            setBackground(drawable);
-        } else {
-            setBackgroundDrawable(drawable);
-        }
     }
 
     @Override
