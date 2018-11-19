@@ -1,6 +1,12 @@
 Change Log
 ==========
 
+Version 2.0.3 *(2018-11-19)*
+----------------------------
+
+ * Refactored to androidx
+ * Updated dependencies
+
 Version 2.0.2 *(2018-06-22)*
 ----------------------------
 

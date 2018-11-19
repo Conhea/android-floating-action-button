@@ -2,7 +2,7 @@
 ext {
   versionMajor = 2
   versionMinor = 0
-  versionPatch = 2
+  versionPatch = 3
   versionBuild = 0 // bump for dogfood builds, public betas, etc.
 
   versionCode = Integer.parseInt("$versionMajor") * 10000 + Integer.parseInt("$versionMinor") * 1000 + Integer.parseInt("$versionPatch") * 100 + Integer.parseInt("$versionBuild")
@@ -15,7 +15,7 @@ buildscript {
 
   }
   dependencies {
-    classpath 'com.android.tools.build:gradle:3.1.3'
+    classpath 'com.android.tools.build:gradle:4.2.0-alpha16'
 
     // NOTE: Do not place your application dependencies here; they belong
     // in the individual module build.gradle files

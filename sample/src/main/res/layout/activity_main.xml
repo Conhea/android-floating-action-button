@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout
+<androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinator_layout"
@@ -70,4 +70,4 @@
             fab:fab_title="@string/text_from_string_ressource"
             fab:fab_colorPressed="@color/white_pressed"/>
     </com.github.conhea.floatingactionbutton.FloatingActionsMenu>
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

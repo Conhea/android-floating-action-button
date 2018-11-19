@@ -6,7 +6,7 @@ Credits
 =======
 I used [FloatingActionButton](https://github.com/bohsen/android-floating-action-button) library 
 by [Jerzy Chalupski](https://github.com/futuresimple) as a base for development.
-As this wasn't being actively developed any longer I've decided to incorperate a 
+As this wasn't being actively developed any longer I've decided to incorporate a
 couple of the pullrequests that was submitted to the original project.
 
 
@@ -35,7 +35,7 @@ Just add the dependency to your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'com.github.conhea:floatingactionbutton:2.0.2'
+    implementation 'com.github.conhea:floatingactionbutton:2.0.3'
 }
 ```
 
@@ -45,7 +45,7 @@ To see how the buttons are added to your xml layouts, check the sample project.
 License
 =======
 
-    Copyright (C) 2017 Thomas Bohsen Schmidt
+    Copyright (C) 2018 Thomas Bohsen Schmidt
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
